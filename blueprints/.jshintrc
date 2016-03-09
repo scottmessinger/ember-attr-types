@@ -1,0 +1,7 @@
+{
+  "predef": [
+    "console"
+  ],
+  "strict": false,
+  "asi": true,
+}

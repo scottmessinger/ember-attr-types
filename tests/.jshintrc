@@ -9,6 +9,7 @@
     "define",
     "console",
     "visit",
+    "throws",
     "exists",
     "fillIn",
     "click",
@@ -23,6 +24,7 @@
     "currentPath",
     "currentRouteName"
   ],
+  "asi": true,
   "node": false,
   "browser": false,
   "boss": true,
