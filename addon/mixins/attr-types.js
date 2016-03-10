@@ -2,7 +2,7 @@ import Ember from 'ember';
 import schemaInspector from 'schema-inspector'
 
 
-let Validator = function(attrs, attrTypes){
+export let Validator = function(attrs, attrTypes){
 
   // Validate the object using schema inspector
   let result = schemaInspector.validate({
