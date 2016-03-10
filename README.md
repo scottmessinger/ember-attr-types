@@ -1,26 +1,91 @@
-# Attr-types
+# React's PropTypes for Ember
 
-This README outlines the details of collaborating on this Ember addon.
+React has a wonderful feature called [PropTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) which enables developers to quickly see what properties the component requires and which properties are optional. Ember calls properties "attributes", thus this addon's name. Here's an example:
 
-## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+### A simple example
+```js
+// app/components/single-comment.js
+import attrTypes from 'attr-types'
 
-## Running
+export default Ember.Component.extend(attrTypes, {
+  attrTypes: {
+    text: {type: "string"},
+    authorName: {type: "string"},
+    authorId: {type: "string"},
+  }
+})
+```
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```hbs
+{{single-comment text=1}}
+```
 
-## Running Tests
+```js
+// In the console.
+Error: Validation failed for comment
+Property @.text: must be string but is number
+Property @.authorName:
+Property @.authorId: is missing and not optional
+```
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
 
-## Building
+### A more complex example
 
-* `ember build`
+```js
+// app/components/people-list.js
+import attrTypes from 'attr-types'
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+export default Ember.Component.extend(attrTypes, {
+
+  attrTypes: {
+    people: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          name: {type: "string"},
+          age: {type: "string"},
+          location: {type: "string", optional: true}
+          jobs: {
+            type: 'array',
+            items: { type: 'string', minLength: 1 }
+          },
+          email: {type: "string", pattern: "email"}
+        }
+      }
+    }
+  }
+})
+```
+
+```js
+// Assuming we have the following model:
+
+people = [
+  {
+    name: "Scott",
+    age: 99,
+    location: "Baltimore",
+    jobs: [ "teacher", "developer"],
+    email: "scott@example.com"
+  },
+  {
+    name: 81,
+    age: "Robbie"
+  }
+]
+```
+
+```hbs
+  {{people-list people=people }}
+```
+
+```js
+// In the console
+Error: Validation failed for people-list component
+Property @people[1].name must be string but is number
+Property @people[1].age must be number but is string
+Property @people[1].jobs is missing and is not optional
+Property @people[1].email is missing and is not optional
+```
