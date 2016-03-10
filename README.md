@@ -12,7 +12,6 @@ export default Ember.Component.extend(attrTypes, {
   attrTypes: {
     text: {type: "string"},
     authorName: {type: "string"},
-    authorId: {type: "string"},
   }
 })
 ```
@@ -25,8 +24,7 @@ export default Ember.Component.extend(attrTypes, {
 // In the console.
 Error: Validation failed for comment
 Property @.text: must be string but is number
-Property @.authorName:
-Property @.authorId: is missing and not optional
+Property @.authorName: is missing and not optional
 ```
 
 
