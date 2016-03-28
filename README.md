@@ -10,8 +10,8 @@ import attrTypes from 'attr-types'
 
 export default Ember.Component.extend(attrTypes, {
   attrTypes: {
-    text: {type: "string"},
-    authorName: {type: "string"},
+    text: "string",
+    authorName: "string",
   }
 })
 ```
@@ -42,8 +42,8 @@ export default Ember.Component.extend(attrTypes, {
       items: {
         type: "object",
         properties: {
-          name: {type: "string"},
-          age: {type: "string"},
+          name: "string",
+          age: "string",
           location: {type: "string", optional: true}
           jobs: {
             type: 'array',
