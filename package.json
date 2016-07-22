@@ -6,6 +6,7 @@
     "doc": "doc",
     "test": "tests"
   },
+  "private": true,
   "scripts": {
     "build": "ember build",
     "start": "ember server",
