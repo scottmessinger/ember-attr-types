@@ -1,5 +1,5 @@
 {
-  "name": "attr-types",
+  "name": "ember-attr-types",
   "version": "0.0.1",
   "description": "React's PropTypes for Ember. Give your components the gift of a defined interface and beautiful error messages.",
   "directories": {
